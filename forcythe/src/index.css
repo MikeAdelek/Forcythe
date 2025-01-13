@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
+
+:root {
+
+  ---primary-background: #030516;
+  ---secondary-background: #1f3449;
+  ---linear-background: rgba(12, 38, 69, 0);
+  ---linear-background2: rgba(7, 22, 38, 0);
+  ---accent: #60a6e7;
+  ---dark-grey: #aea9b1;
+  ---light-grey: #e6e0e9;
+}
+
+body {
+  color: rgb(255, 255, 255);
+  background-color: var(---primary-background);
+  font-family: 'Lexend', sans-serif;
+  font-size: 16px;
+  line-height: 1.6875em;
+  font-weight: 400;
+  /* overflow-x: hidden; */
+  transition: 0.3s ease-in-out;
+}
+
+@layer components {
+  .text-accent {
+    --tw-text-opacity: 1;
+    color: rgb(96 166 231 / var(--tw-text-opacity));
+  }
+
+  .text-darkGrey {
+    --tw-text-opacity: 1;
+    color: rgb(174 169 177 / var(--tw-text-opacity));
+  }
+
+  .image-slide-container {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: var(--width);
+    transform: var(--transform);
+  }
+
+  .image-slide {
+    flex: 0 0 auto;
+    min-width: var(--min-width);
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .image-slide-child {
+    flex: 0 0 auto;
+    display: flex;
+    min-width: auto;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .image-child {
+    transform: var(--transform);
+  }
+
+  .bg-accent {
+    background-color: rgb(96 166 231 / var(--tw-bg-opacity));
+  }
+
+  .custom-animate {
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .div-padding {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    .div-padding {
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .div-padding {
+        padding-left: 7rem;
+        padding-right: 7rem;
+      }
+    }
+  }
+
+  .bg-primaryBackground {
+    --tw-bg-opacity: 1;
+    background-color: rgb(3 5 22 / var(--tw-bg-opacity));
+  }
+  .menu-nav{
+    background: linear-gradient(0deg, rgba(7, 22, 38, 0) 32%, rgb(7, 22, 38) 85%);
+  }
+
+  .light-dot {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    filter: blur(4px);
+    opacity: 0.5;
+    animation: moveAroundCustomMenu 6s linear infinite;
+  }
+
+  @keyframes moveAroundCustomMenu {
+
+    /* Start at top-right corner and move left */
+    0% {
+      transform: translate(100%, 8%);
+    }
+
+    /* Move to top-left corner */
+    20% {
+      transform: translate(0%, 8%);
+    }
+
+    /* Move down left side */
+    40% {
+      transform: translate(0%, 92%);
+    }
+
+    /* Move along bottom */
+    60% {
+      transform: translate(100%, 92%);
+    }
+
+    /* Move up right side */
+    80% {
+      transform: translate(100%, 8%);
+    }
+
+    100% {
+      transform: translate(100%, 8%);
+    }
+  }
+}
