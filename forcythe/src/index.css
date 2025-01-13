@@ -103,50 +103,28 @@ body {
     --tw-bg-opacity: 1;
     background-color: rgb(3 5 22 / var(--tw-bg-opacity));
   }
-  .menu-nav{
+
+  .menu-nav {
     background: linear-gradient(0deg, rgba(7, 22, 38, 0) 32%, rgb(7, 22, 38) 85%);
   }
 
-  .light-dot {
-    width: 12px;
-    height: 12px;
-    background: white;
-    border-radius: 50%;
-    position: absolute;
-    filter: blur(4px);
-    opacity: 0.5;
-    animation: moveAroundCustomMenu 6s linear infinite;
-  }
-
-  @keyframes moveAroundCustomMenu {
-
-    /* Start at top-right corner and move left */
+  @keyframes border-light {
     0% {
-      transform: translate(100%, 8%);
-    }
-
-    /* Move to top-left corner */
-    20% {
-      transform: translate(0%, 8%);
-    }
-
-    /* Move down left side */
-    40% {
-      transform: translate(0%, 92%);
-    }
-
-    /* Move along bottom */
-    60% {
-      transform: translate(100%, 92%);
-    }
-
-    /* Move up right side */
-    80% {
-      transform: translate(100%, 8%);
+      background-position: 0% 50%;
     }
 
     100% {
-      transform: translate(100%, 8%);
+      background-position: 100% 50%;
     }
+  }
+
+  .animate-border-light {
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.6));
+    background-size: 200% 200%;
+    animation: border-light 3s linear infinite;
+    border-radius: inherit;
   }
 }

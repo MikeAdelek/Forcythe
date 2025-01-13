@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import logo from "../assets/forcythe logo.svg";
 import { NavLink } from "react-router-dom";
 import { HiMenuAlt4 } from "react-icons/hi";
@@ -7,15 +7,19 @@ const Header = () => {
   // is open button for mobile
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = [
-    { name: "About", href: "/", className: "" },
-    { name: "Services", href: "/", className: "" },
-    { name: "Portfolio", href: "/", className: "" },
-    { name: "Studio", href: "/", className: "" },
-    { name: "Foundation", href: "/", className: "" },
-    { name: "Careers", href: "/", className: "md:hidden" }, // visible only on small screens
-    { name: "Blog", href: "/", className: "md:hidden" } // visible only on small screens
-  ];
+  // Memoize nav links for better performance
+  const navLinks = useMemo(
+    () => [
+      { name: "About", href: "/", className: "" },
+      { name: "Services", href: "/", className: "" },
+      { name: "Portfolio", href: "/", className: "" },
+      { name: "Studio", href: "/", className: "" },
+      { name: "Foundation", href: "/", className: "" },
+      { name: "Careers", href: "/", className: "md:hidden" }, // visible only on small screens
+      { name: "Blog", href: "/", className: "md:hidden" } // visible only on small screens
+    ],
+    []
+  );
 
   return (
     <>
@@ -43,6 +47,7 @@ const Header = () => {
           <div className="relative w-fit group hover:border-[#064386]">
             <div className="w-full h-full absolute top-1.5 right-1.5 z-0 rounded-full border-[1px] border-dashed group-hover:border-[#064386]"></div>
             <button
+              aria-label="Book a call"
               className="custom-animate w-w-fit py-[12px] px-5 flex gap-2 items-center justify-center rounded-full 
                      bg-white text-black text-base relative z-10 font-semibold group-hover:bg-[#064386] group-hover:text-white text-center whitespace-nowrap cursor-pointer hover:shadow-md 
                      "
@@ -56,7 +61,7 @@ const Header = () => {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="bg-white bg-opacity-10 rounded-md p-3 md:hidden cursor-pointer"
-          aria-label="Menu"
+          aria-label="Toggle mobile menu"
         >
           {isOpen ? (
             <HiMenuAlt4 className="w-6 h-6" />
@@ -72,11 +77,17 @@ const Header = () => {
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
+        {/* Glowing border effect */}
+        <div
+          className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-white via-transparent to-white
+      animate-border-light bg-[length:200%_200%] pointer-events-none"
+        ></div>
+
         {/* Container with custom mobile menu shape */}
-        <div className="text-white z-10 bg-transparent rounded-[inherit] w-full">
-          <div className="w-full p-5 py-8 rounded-[2rem]">
+        <div className="relative text-white z-10 bg-transparent rounded-[inherit] w-full">
+          <div className="w-full p-5 py-8 rounded-[2rem] menu-nav">
             {/* Menu content */}
-            <nav className="flex flex-col menu-nav">
+            <nav className="flex flex-col" aria-label="Mobile Navigation">
               {navLinks.map((nav) => (
                 <navLink
                   key={nav.name}
@@ -90,9 +101,8 @@ const Header = () => {
             </nav>
           </div>
         </div>
-        {/* Light animation container */}
-        <div className="flex-none inset-0 overflow-hidden absolute z-0 rounded-[inherit]"></div>
-        <div className="light-dot bg-black absolute z-1 flex-none inset-[2px] rounded-[inherit]"></div>
+        {/* bottom color  */}
+        <div className="bg-black absolute inset-[2px] rounded-[inherit]"></div>
       </div>
     </>
   );

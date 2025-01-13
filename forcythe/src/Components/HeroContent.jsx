@@ -13,8 +13,10 @@ const HeroContent = ({ subHero, betterAnimationStart }) => {
       initial={{ opacity: 1 }} // Changed to 1 so container is visible
       whileInView="reveal"
       viewport={{ once: true }}
+      aria-label="Hero content section"
     >
       <div className="mb-8 max-w-3xl">
+        {/* Animated Text */}
         <div>
           <motion.p
             initial="hidden"
@@ -41,6 +43,8 @@ const HeroContent = ({ subHero, betterAnimationStart }) => {
           </motion.p>
         </div>
       </div>
+
+      {/* Call-to-Action Button */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -49,6 +53,7 @@ const HeroContent = ({ subHero, betterAnimationStart }) => {
       >
         <div className="relative w-fit group">
           <button
+            aria-label="Book a call"
             className="custom-animate w-w-fit py-[12px] px-5 flex gap-2 items-center justify-center rounded-full 
                bg-white text-black text-base relative z-10 font-semibold group-hover:bg-[#064386] group-hover:text-white text-center whitespace-nowrap cursor-pointer hover:shadow-md"
           >

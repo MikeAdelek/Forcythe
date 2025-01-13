@@ -20,7 +20,10 @@ export const heroText = [
 
 const HeroTitle = ({ allChars }) => {
   return (
-    <div className="min-h-[180px]">
+    <section
+      className="min-h-[180px]"
+      aria-label="Hero section displaying the phrase 'We build products that shape a better future'"
+    >
       <motion.h1
         initial="hidden"
         whileInView="reveal"
@@ -52,7 +55,7 @@ const HeroTitle = ({ allChars }) => {
           </motion.span>
         ))}
       </motion.h1>
-    </div>
+    </section>
   );
 };
 
