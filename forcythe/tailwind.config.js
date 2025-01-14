@@ -9,7 +9,7 @@ export default {
           "100%": { backgroundPosition: "100% 50%" }
         }
       },
-      animation: { "border-slide": "border-slide 3s linear infinite" },
+      animation: { 'border-light': 'border-light 3s linear infinite', },
       backgroundImage: {
         "hero-bg": "url('./assets/bg.svg')" // Add your custom background image here
       }
