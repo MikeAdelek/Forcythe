@@ -1,7 +1,7 @@
 import "./index.css";
 import { Routes, Route } from "react-router-dom";
 import Hero from "./Components/Hero";
-import ImageSlide from "./Components/ImageSlide";
+// import ImageSlide from "./Components/ImageSlide";
 import Layout from "./pages/Layout";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           element={
             <>
               <Hero />
-              <ImageSlide />
+              {/* <ImageSlide /> */}
             </>
           }
         />
